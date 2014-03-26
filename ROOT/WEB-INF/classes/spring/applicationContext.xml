@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="dbManager" class="com.hyx.db.DbManager" scope="prototype"></bean>
+    <bean id="dbManagerImp" class="com.hyx.db.DbManagerImp" scope="prototype"></bean>
+    
+    <!-- <bean id="cardDao" class="com.hyx.dao.CardDao" scope="prototype">
+        <property name="dbManagerImp" ref="dbManagerImp"></property>
+    </bean> -->
+    
+</beans>
+

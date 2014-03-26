@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xwork PUBLIC "-//OpenSymphony Group//XWork 1.1.1//EN" "http://www.opensymphony.com/xwork/xwork-1.1.1.dtd">
+<xwork>
+	<package name="webwork-seat" extends="webwork-default">
+		<interceptors>
+			<!-- ip限制 -->
+			<interceptor name="webInterceptor" class="com.hyx.interceptor.WebInterceptor" />
+		</interceptors>
+		<global-results>
+			<result name="ip_error" type="chain">sendIPErrorXML</result>
+		</global-results>
+
+		<!-- 返回IP不允许访问的提示信息 -->
+		<action name="sendIPErrorXML" class="com.hyx.action.BaseAction"
+			method="sendIPErrorXML">
+			<interceptor-ref name="params" />
+		</action>
+	
+		<!-- 对微信进行验证 -->
+	    <action name="validteWeixin" class="com.hyx.action.WeixinAction"
+			method="validate">
+			<interceptor-ref name="params" />
+		</action>
+		<!-- 获取微信访问令牌 -->
+	    <action name="getAccessToken" class="com.hyx.action.WeixinAction"
+			method="getAccessToken">
+			<interceptor-ref name="params" />
+		</action>
+		
+	</package>
+</xwork>
